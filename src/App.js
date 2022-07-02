@@ -15,6 +15,7 @@ import MyReview from './Pages/Dashboard/MyReview';
 import MyHistory from './Pages/Dashboard/MyHistory';
 import Users from './Pages/Dashboard/Users';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import AddDoctor from './Pages/Dashboard/AddDoctor';
 
 function App() {
   return (
@@ -22,27 +23,21 @@ function App() {
       <Navbar></Navbar>
       <Routes>
        <Route path='/' element={<Home/>}/>
-       <Route path='/about' element={<About/>}/>
-       <Route path='/login' element={<Login/>}/>
+       <Route path='/about' element={<About/>}/>  
        <Route path='/appointment' element={<RequireAuth>
          <Appointment/>
        </RequireAuth>}/>
 
-      <Route path='/dashboard' element={<RequireAuth>
-         <Dashboard/>
-       </RequireAuth>} >
-
-         <Route index element={<MyAppointment></MyAppointment>}></Route>
-
-         <Route path='review' element={<MyReview></MyReview>}></Route>
-
-         <Route path='history' element={<MyHistory></MyHistory>}></Route>
+       <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
+          <Route index element={<MyAppointment></MyAppointment>}></Route>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="history" element={<MyHistory></MyHistory>}></Route>
+          <Route path="users" element={<Users></Users>}></Route>
+          <Route path="addDoctor" element={<AddDoctor></AddDoctor>}></Route>
          
-         <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
-         
-       </Route>
+        </Route>
 
-
+        <Route path='/login' element={<Login/>}/>
        <Route path='/signup' element={<SignUp/>}/>
       </Routes>
       <ToastContainer />
